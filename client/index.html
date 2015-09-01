@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>chatterbox</title>
+    <title>Chatterbox</title>
     <link rel="stylesheet" href="styles/styles.css">
 
     <!-- dependencies -->
@@ -10,13 +10,21 @@
     <script src="bower_components/underscore/underscore.js"></script>
     <!-- your scripts -->
     <script src="env/config.js"></script>
-    <script src="scripts/app.js"></script>
   </head>
   <body>
+    <aside>
+      <h2>Chatrooms</h2>
+      <div></div>
+    </aside>
     <div id="main">
-      <h1>chatterbox</h1>
+      <h1>Chatterbox</h1>
+      <h2 class="username">Place Holder</h2>
       <!-- Your HTML goes here! -->
       <!-- Form Goes Here -->
+      <form>
+        <input id="content" type="text" name="chatMessage">
+        <button id="post-content" type="button">Post</button>
+      </form>
         <!-- Dropdown to select room -->
         <!-- Text box for message -->
         <!-- Submit button -->
@@ -25,6 +33,7 @@
         
       </div>
     </div>
-    <div id="chats"></div>
+    <!-- <div id="chats"></div> -->
+    <script src="scripts/app.js"></script>
   </body>
 </html>

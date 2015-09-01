@@ -1,18 +1,29 @@
 body {
-    background: #eee;
+    display: flex;
+    flex-direction: row;
+    background: #ccffcc;
     text-align: center;
     padding: 0 25px;
-    font-family: arial, sans-serif;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+aside {
+    /*flex-direction: row;*/
+    flex-grow: 1;
+    margin: 10px 30px 10px 10px;
 }
 
 #main, #chats {
+    /*flex-direction: row;*/
+    flex-grow: 2;
     width: 500px;
     margin: auto;
     text-align: left;
     background: white;
     padding: 50px 60px;
-    border: solid #ddd;
+    border: 1px solid grey;
     border-width: 0 1px 1px 1px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 #main h1 {
@@ -20,8 +31,12 @@ body {
     font-size: 35px;
     margin-bottom: 5px;
     padding: 5px;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
 }
 
+#main h2 {
+    padding: 5px;
+}
 #main h1 span {
     font-style:italic;
 }
@@ -44,6 +59,23 @@ body {
     font-size: 12px;
     color: green;
     line-height: 13px;
+}
+
+#message-container .message-content {
+    background-color: #9bd6f4;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+}
+
+.user {
+    font-size: 16px;
+}
+
+.message-content p {
+    font-size: 12px;
 }
 
 form {
@@ -82,3 +114,19 @@ form input[type=text] {
 .spinner img {
     padding: 10px;
 }
+
+button {
+    margin: 5px;
+    padding: 5px;
+    background-color: #ccffcc;
+    border-radius: 3px;
+}
+
+
+
+
+
+
+
+
+
