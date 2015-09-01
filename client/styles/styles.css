@@ -62,7 +62,7 @@ aside {
     line-height: 13px;
 }
 
-#message-container .message-content {
+#chats .message-content {
     background-color: #9bd6f4;
     border: 1px solid black;
     border-radius: 5px;

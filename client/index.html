@@ -15,26 +15,19 @@
     <aside>
       <h2>Chatrooms</h2>
       <h3>All Rooms</h3>
-      <div></div>
+      <div id="roomSelect"></div>
     </aside>
     <div id="main">
       <h1>Chatterbox</h1>
-      <h2 class="username">Place Holder</h2>
+      <h2 class="user">Place Holder</h2>
       <!-- Your HTML goes here! -->
-      <!-- Form Goes Here -->
-      <form>
-        <input id="content" type="text" name="chatMessage">
-        <button id="post-content" type="button">Post</button>
+      <form id="send">
+        <input id="message" type="text" name="chatMessage">
+        <button class="submit" type="button">Post</button>
       </form>
-        <!-- Dropdown to select room -->
-        <!-- Text box for message -->
-        <!-- Submit button -->
-      <!-- Message Container -->
-      <div id="message-container">
-        
-      </div>
+      <div id="chats"></div>
+      <!-- Message Container -->        
     </div>
-    <!-- <div id="chats"></div> -->
     <script src="scripts/app.js"></script>
   </body>
 </html>
