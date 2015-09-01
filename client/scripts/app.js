@@ -19,6 +19,7 @@ $(document).ready(function() {
   });
   
   var rooms = [];
+  window.currentRoom = null;
 
   //Display Messages retrieved from parse server
   //Make a GET request.  Runs every five seconds to
@@ -51,9 +52,20 @@ $(document).ready(function() {
             rooms.push(escapedRoom);
           };
 
-          var messageDiv = $('<div class=\'message-content\'></div>');
-          messageDiv.html('<span class=\'user\'>' + escapedUsr + '</span><p>' + escapedMsg + '</p>');
-          $('#message-container').prepend(messageDiv);
+          if (currentRoom) {
+            //do stuff
+            if (currentRoom === escapedRoom) {
+              var messageDiv = $('<div class=\'message-content\'></div>');
+              messageDiv.html('<span class=\'user\'>' + escapedUsr + '</span><p>' + escapedMsg + '</p>');
+              $('#message-container').prepend(messageDiv);  
+            }
+          } else {
+            var messageDiv = $('<div class=\'message-content\'></div>');
+            messageDiv.html('<span class=\'user\'>' + escapedUsr + '</span><p>' + escapedMsg +'</p>');
+            $('#message-container').prepend(messageDiv);
+          }
+            
+
           
         }
         //Append current rooms to the Chatrooms sidebar
@@ -90,9 +102,16 @@ $(document).ready(function() {
   }
   
   getMessages();
+
+  $('aside div').on('click', 'p', function(event) {
+    window.currentRoom = event.currentTarget.innerText;
+    getMessages();
+    // console.log(event.currentTarget.innerText);
+  });
+  $('aside h3').on('click', function(event) {
+    window.currentRoom = null;
+    getMessages();
+  })
   setInterval(getMessages, 5000);
-
-//Rooms and Solializing
-
 
 });
