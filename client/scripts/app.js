@@ -20,6 +20,7 @@ $(document).ready(function() {
   
   var rooms = [];
   window.currentRoom = null;
+  window.friends = [];
 
   //Display Messages retrieved from parse server
   //Make a GET request.  Runs every five seconds to
@@ -52,16 +53,20 @@ $(document).ready(function() {
             rooms.push(escapedRoom);
           };
 
+          //Sets message content to bold if the user name is in the current friends list
+          var msgClass = window.friends.indexOf(escapedUsr) !== -1 ? "bold" : "normal";
+
           if (currentRoom) {
-            //do stuff
+            //If currentRoom is defined, only append messages from that room to the page
             if (currentRoom === escapedRoom) {
               var messageDiv = $('<div class=\'message-content\'></div>');
-              messageDiv.html('<span class=\'user\'>' + escapedUsr + '</span><p>' + escapedMsg + '</p>');
+              messageDiv.html('<span class=\'user\'>' + escapedUsr + '</span><p class="' + msgClass + '"">' + escapedMsg + '</p>');
               $('#message-container').prepend(messageDiv);  
             }
           } else {
+            //Otherwise append all existing messages to the page
             var messageDiv = $('<div class=\'message-content\'></div>');
-            messageDiv.html('<span class=\'user\'>' + escapedUsr + '</span><p>' + escapedMsg +'</p>');
+            messageDiv.html('<span class=\'user\'>' + escapedUsr + '</span><p class="' + msgClass + '"">' + escapedMsg +'</p>');
             $('#message-container').prepend(messageDiv);
           }
             
@@ -101,8 +106,7 @@ $(document).ready(function() {
     
   }
   
-  getMessages();
-
+  //Button click functions. Chat rooms and friends.
   $('aside div').on('click', 'p', function(event) {
     window.currentRoom = event.currentTarget.innerText;
     getMessages();
@@ -111,7 +115,14 @@ $(document).ready(function() {
   $('aside h3').on('click', function(event) {
     window.currentRoom = null;
     getMessages();
+  });
+  $('#message-container').on('click', '.message-content span', function(event) {
+    window.friends.push(event.currentTarget.innerText);
+    getMessages();
   })
+
+
+  getMessages();
   setInterval(getMessages, 5000);
 
 });
